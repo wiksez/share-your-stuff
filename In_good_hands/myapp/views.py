@@ -62,7 +62,7 @@ class AddInstitution(View):
         return render(request, 'add_institution.html', {'form': form})
 
 
-class AddDonation(View):
+class Donations(View):
     def get(self, request):
         form = DonationForm()
         return render(request, 'add_donation.html', {'form': form})
