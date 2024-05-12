@@ -21,3 +21,15 @@ class DonationForm(forms.ModelForm):
     class Meta:
         model = Donation
         fields = '__all__'
+
+
+class RegistrationForm(forms.ModelForm):
+    first_name = forms.CharField()
+    last_name = forms.CharField()
+    email = forms.EmailField()
+    password1 = forms.CharField(widget=forms.PasswordInput())
+    password2 = forms.CharField(widget=forms.PasswordInput())
+
+    class Meta:
+        model = User
+        fields = '__all__'
