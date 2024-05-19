@@ -13,9 +13,14 @@ class LandingPage(View):
         institution = Institution.objects.count()
         quantity = 0
         donation = Donation.objects.all()
+        fundation = Institution.objects.filter(type=1)
+        organizations = Institution.objects.filter(type=2)
+        collections = Institution.objects.filter(type=3)
         for elements in donation:
             quantity += int(elements.quantity)
-        return render(request, 'index.html', {'institution': institution, 'quantity': quantity})
+        return render(request, 'index.html', {'institution': institution,
+                                              'quantity': quantity, 'fonds': fundation, 'organization': organizations,
+                                              'collections': collections})
 
 
 class AddDonation(View):
