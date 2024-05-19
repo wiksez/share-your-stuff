@@ -1,7 +1,8 @@
+from django.contrib.auth.models import User
 from django.shortcuts import render, redirect
 from django.views import View
 
-from myapp.forms import CategoryForm, InstitutionForm, DonationForm
+from myapp.forms import CategoryForm, InstitutionForm, DonationForm, RegistrationForm
 from myapp.models import Donation, Institution, Category
 
 
@@ -39,6 +40,19 @@ class Register(View):
 
     def get(self, request):
         return render(request, 'register.html')
+
+    def post(self, request):
+            name = request.POST['name']
+            surname = request.POST['surname']
+            email = request.POST['email']
+            pass1 = request.POST['password']
+            pass2 = request.POST['password2']
+            if pass1 is not None and pass1 == pass2:
+                username = email.split('@')[0]
+                user = User.objects.create_user(username=username, first_name=name, last_name=surname, email=email,
+                                                password=pass1)
+                return redirect('login')
+            return render(request, 'register.html')
 
 
 class AddCategory(View):
