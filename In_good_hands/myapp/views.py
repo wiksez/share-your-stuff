@@ -1,3 +1,4 @@
+from django.contrib.auth import authenticate, login
 from django.contrib.auth.models import User
 from django.shortcuts import render, redirect
 from django.views import View
@@ -34,6 +35,15 @@ class Login(View):
 
     def get(self, request):
         return render(request, 'login.html')
+
+    def post(self, request):
+        email = request.POST['email']
+        password = request.POST['password']
+        user = authenticate(username=email, password=password)
+        if user is not None:
+            login(request, user)
+            return redirect('home')
+        return redirect('registration')
 
 
 class Register(View):
