@@ -234,6 +234,25 @@ document.addEventListener("DOMContentLoaded", function() {
       this.$stepInstructions[0].parentElement.parentElement.hidden = this.currentStep >= 6;
       this.$step.parentElement.hidden = this.currentStep >= 6;
 
+      document.getElementById('hideButton').addEventListener('click', function() {
+
+      let categories = document.querySelectorAll(".form-categories");
+      let inst = document.querySelectorAll(".category-section");
+
+      let notCheckedInstitution = [];
+
+      for (let i = 0; i < categories.length; i++) {
+          if (!categories[i].checked) {
+              notCheckedInstitution.push(inst[i]);
+          }
+      }
+
+      notCheckedInstitution.forEach(function(element) {
+          element.style.display = 'none';
+      });
+  });
+
+
       // TODO: get data from inputs and show them in summary
     }
 
