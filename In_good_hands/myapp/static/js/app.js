@@ -252,6 +252,37 @@ document.addEventListener("DOMContentLoaded", function() {
       });
   });
 
+    document.getElementById('textFromForm').addEventListener('click', function (){
+        const address = form.querySelector(".form-address");
+        const city = form.querySelector(".form-city");
+        const postcode = form.querySelector(".form-post");
+        const phone = form.querySelector(".form-phone");
+        const date = form.querySelector(".form-date");
+        const time = form.querySelector(".form-time");
+        const moreInfo = form.querySelector(".form-comment");
+        const bags = form.querySelector(".form-count");
+
+
+       const summaryStreet = document.getElementById("street");
+       const summaryCity = document.getElementById("city");
+       const summaryPost = document.getElementById("post");
+       const summaryPhone = document.getElementById("phone");
+       const summaryBags = document.getElementById("summaryBags");
+
+       const summaryDate = document.getElementById("date");
+       const summaryTime = document.getElementById("time");
+       const summaryComment = document.getElementById("comment");
+
+       summaryStreet.innerText = address.value;
+       summaryCity.innerText = city.value;
+       summaryPost.innerText = postcode.value;
+       summaryPhone.innerText = phone.value;
+       summaryDate.innerText = date.value;
+       summaryTime.innerText = time.value;
+       summaryComment.innerText = moreInfo.value;
+       summaryBags.innerText = bags.value + " worki";
+
+    })
 
       // TODO: get data from inputs and show them in summary
     }
